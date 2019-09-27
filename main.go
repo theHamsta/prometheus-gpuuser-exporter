@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-func topusers(response http.ResponseWriter, request *http.Request) {
+func metrics(response http.ResponseWriter, request *http.Request) {
 	out, err := exec.Command(
 		"sreport", "user", "top", "--parsable", "--tres=gres/gpu", "topcount=50", "--noheader",
 	).Output()
@@ -64,7 +64,7 @@ func main() {
 		addr = ":" + os.Args[1]
 	}
 
-	http.HandleFunc("/topusers/", topusers)
+	http.HandleFunc("/metrics/", metrics)
 	err := http.ListenAndServe(addr, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)

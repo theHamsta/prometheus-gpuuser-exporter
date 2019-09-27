@@ -46,7 +46,7 @@ func metrics(response http.ResponseWriter, request *http.Request) {
 	result := make([]string, len(records))
 
 	for rowIdx, row := range records {
-		result[rowIdx] = fmt.Sprintf("%s{user=\"%s\", account=\"%s\"} %s",
+		result[rowIdx] = fmt.Sprintf("%s{user=\"%s\",account=\"%s\"} %s",
 			metricList[gpuMinutesIdx],
 			row[nameIdx],
 			row[accountIdx],
